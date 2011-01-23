@@ -1,1 +1,5 @@
-<p>Login to your facebook first</p>
+<% if @user %>
+  <p>Logged in <%=@user.name %></p>
+<% else %>
+  <p>Login to your facebook first</p>
+<% end %>
