@@ -4,7 +4,12 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
+  #filter_parameter_logging :password
+  
+  before_filter :parse_facebook_cookies
+  
+  def parse_facebook_cookies
+    @facebook_cookies ||= Koala::Facebook::OAuth.new.get_user_info_from_cookie(cookies)
+  end
+  
 end
