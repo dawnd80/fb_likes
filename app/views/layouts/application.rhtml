@@ -8,15 +8,12 @@
 
   <body>
     <div id="fb-root"></div>
-    <script type="text/javascript">
-      FB.init({appId: '185076204847204', status: true, cookie: true, xfbml: true});
-      FB.Event.subscribe('auth.login', function(response) {window.location.reload();});
-    </script>
-
+    <div class=nav>
+      <% if @user %>
+        Logged as <%=@user["name"] %>
+      <% end %>
+    </div>
     <div class="content">
-      <div id="nav">
-        <fb:login-button autologoutlink="true" perms="email">Login with Facebook</fb:login-button>
-      </div>
       <%= yield %>
     </div>
   </body>
