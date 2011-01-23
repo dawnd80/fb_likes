@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   #filter_parameter_logging :password
   
   before_filter :parse_facebook_cookies
+  before_filter :authorize
   
   def access_cookies
     return @access_cookies if defined?(@access_cookies)
@@ -15,6 +16,12 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+  
+  def authorize
+    respond_to do |wants|
+      wants.html { redirect_to login_url }
+    end unless access_cookies.present?
+  end
   
   def parse_facebook_cookies
     @facebook_cookies ||= Koala::Facebook::OAuth.new.get_user_info_from_cookie(cookies)

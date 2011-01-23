@@ -34,7 +34,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :friends, :only => [:index], :collection => { :show_likes => :post } 
   
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => :welcome, :action => :login
+  map.root :controller => :friends, :action => :index
   map.login '/login', :controller => :welcome, :action => :login
   map.logout '/logout', :controller => :welcome, :action => :login
 
