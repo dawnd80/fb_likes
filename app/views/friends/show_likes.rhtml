@@ -1,0 +1,6 @@
+<p><%=@friend['name'] %> and you both like:</p>
+<ol class="likes">
+  <% @commons.each do |c| %>
+    <li><%=c['name'] %></li>
+  <% end %>
+</ol>

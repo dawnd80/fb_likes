@@ -1,5 +1,15 @@
-<ol>
-<% @friends.each do |f| %>
-  <li><%=f["name"]%></li>
+<p>Select a friend to compare what you both like:</p>
+
+<% form_tag show_likes_friends_url() do %>
+  <% rows = @friends.length/3 -%>
+  <% 3.times do |time| %>
+    <% starts = time * rows -%>
+    <% ends = starts + rows - 1 -%>
+    <ol>
+    <% @friends[starts..ends].each do |f| %>
+      <li><%=radio_button_tag :friend_id, f["id"] %> <%=f["name"] %></li>
+    <% end %>
+    </ol>
+  <% end %>
+  <p class="submit"><%=submit_tag "compare" %></p>
 <% end %>
-</ol>
