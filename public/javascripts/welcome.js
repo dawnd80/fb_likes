@@ -5,7 +5,7 @@ $(document).ready(function() {
   $("a#logout").click(function(e){
     FB.logout(function(r) {
       console.log('logging out fb');
-      window.location.href = $(this).attr('callback');
+      window.location.href = $("a#logout").attr('callback');
     });
     return false;
   });

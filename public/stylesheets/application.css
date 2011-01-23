@@ -24,6 +24,7 @@ ol.likes {
   background-color: #EDEFF4;
   padding: 20px;
   width: 500px;
+  float: none;
 }
 
 ol.likes li {
