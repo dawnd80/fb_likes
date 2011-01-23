@@ -12,9 +12,7 @@
     <div class="nav">
       <% if @user %>
         <span>Logged in as <%=@user["name"] %></span>
-        <a href="#" id="logout" callback='<%=logout_url() %>' >
-          <%= image_tag "logout_small.gif", :id => "fb_logout_image", :alt => "Logout" %>
-        </a>
+        <%=link_to image_tag("logout_small.gif", :alt => "Logout"), 'javascript:void(0)', {:id => 'logout', :callback => '<%=logout_url %>'} %>
       <% end %>
     </div>
     <div class="content">
