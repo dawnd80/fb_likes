@@ -3,6 +3,7 @@ class WelcomeController < ApplicationController
 
   def new
     if access_cookies
+      @friends = @graph.get_connections("me", "friends")
       @user = @graph.get_object("me")
     end
     respond_to do |format|
