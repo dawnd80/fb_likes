@@ -1,6 +1,8 @@
 .bundle/*
 .DS_Store
 
-log/**/*
+db/development.sqlite3
+
+log/*
 
 tmp/**/*
