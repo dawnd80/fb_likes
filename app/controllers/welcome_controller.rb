@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
-  def login
-    @access_token = facebook_cookies['access_token']
+  def new
+    #@user = User.new
     respond_to do |format|
       format.html
     end

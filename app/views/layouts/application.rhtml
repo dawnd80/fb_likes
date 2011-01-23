@@ -1,15 +1,20 @@
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fb="http://www.facebook.com/2008/fbml">
   <head>
-    <title>Registration</title>
+    <title>Facebook Likes</title>
+    <%= javascript_include_tag :all, :recursive => true %>
     <%= stylesheet_link_tag("application") %>
   </head>
 
   <body>
+    <div id="fb-root"></div>
+    <script type="text/javascript">
+      FB.init({appId: '185076204847204', status: true, cookie: true, xfbml: true});
+    </script>
+
     <div class="content">
       <div id="nav">
-        <% if current_user %>
-          <%= link_to "Logout", logout_url %>
-        <% end %>
+        <fb:login-button autologoutlink="true">Login with Facebook</fb:login-button>
       </div>
       <%= yield %>
     </div>
