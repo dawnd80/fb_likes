@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def access_cookies
     return @access_cookies if defined?(@access_cookies)
     return nil if @facebook_cookies.nil?
-    @access_token = @facebook_cookies['access_token']
+    @access_cookies = @facebook_cookies['access_token']
   end
 
   protected
