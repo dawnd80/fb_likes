@@ -1,5 +1,9 @@
 <p>Select a friend to compare what you both like:</p>
 
+<% if flash[:error] %>
+  <p class="errorExplanation"><%=flash[:error] -%></p>
+<% end %>
+
 <% form_tag show_likes_friends_url() do %>
   <% rows = @friends.length/3 -%>
   <% 3.times do |time| %>

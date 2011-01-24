@@ -1,8 +1,11 @@
-<p><%=@friend['name'] %> and you both like:</p>
-<ol class="likes">
-  <% @commons.each do |c| %>
-    <li><%=c['name'] %></li>
-  <% end %>
-</ol>
-
+<% if @commons.size == 0 %>
+  <p>Can't find anything <%=@friend['name'] %> and you like in common</p>
+<% else %>
+  <p><%=@friend['name'] %> and you both like:</p>
+  <ol class="likes">
+    <% @commons.each do |c| %>
+      <li><%=c['name'] %></li>
+    <% end %>
+  </ol>
+<% end %>
 <%=link_to "Back to friends list", friends_url %>
