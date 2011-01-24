@@ -11,7 +11,7 @@ class FBUser
   end
 
   def likes
-    self.class.likes(id)
+    graph.get_connections(id, "likes")
   end
   
   def friends
@@ -23,16 +23,12 @@ class FBUser
   end
 
   def friend_likes(userid)
-    self.class.likes(userid)
+    graph.get_connections(userid, "likes")
   end
 
   protected
   def set_graph(token)
     self.graph = Koala::Facebook::GraphAPI.new(token)
-  end
-  
-  def self.likes(userid)
-    graph.get_connections(userid, "likes")
   end
 
 end
