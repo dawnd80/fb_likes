@@ -9,6 +9,10 @@ class FBUser
     end if user
     self
   end
+
+  def likes
+    self.class.likes(id)
+  end
   
   def friends
     graph.get_connections(id, "friends").sort{|f1, f2| f1['name'] <=> f2['name']}
@@ -18,13 +22,17 @@ class FBUser
     graph.get_object(id)
   end
 
-  def likes(userid='me')
-    graph.get_connections(userid, "likes")
+  def friend_likes(userid)
+    self.class.likes(userid)
   end
 
   protected
   def set_graph(token)
     self.graph = Koala::Facebook::GraphAPI.new(token)
+  end
+  
+  def self.likes(userid)
+    graph.get_connections(userid, "likes")
   end
 
 end
